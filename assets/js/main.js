@@ -6,13 +6,20 @@ const app = new Vue({
         myKey: "b03ae2cf97e2691b0cbd883f2249f38a",
         searchQuery: "",
         movieList: [],
+        flagUrl: "https://flagcdn.com/24x18/",
+        flagExt: ".png",
+        movieLang: "",
     },
 
     methods: {
-        tryMe() {
+        boolSearch() {
             axios.get(this.url+this.myKey+"&query="+this.searchQuery)
             .then (response => {
                 this.movieList = response.data.results
+                console.log(this.movieList);
+            })
+            .catch(error => {
+                console.log("Non è stato possibile caricare i risultati, errore: "+ error);
             })
         }
     },
