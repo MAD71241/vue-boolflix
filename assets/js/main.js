@@ -14,6 +14,7 @@ const app = new Vue({
     },
 
     methods: {
+        /* funzione di ricerca simultanea tra serie tv e film */
         boolSearch() {
             axios.all([
                 axios.get(this.moviesUrl + this.myKey + "&query=" + this.searchQuery),
@@ -28,12 +29,19 @@ const app = new Vue({
                 })
 
         },
+        /* funzione utilizzata per sostituire i codici bandiera che generano un errore 404 */
         flagError(event) {
             if (event.target.src.includes("en")) {
                 event.target.src = "https://flagcdn.com/24x18/us.png"
             } else if (event.target.src.includes("ja")) {
                 event.target.src = "https://flagcdn.com/24x18/jp.png"
-            }
+            } else if (event.target.src.includes("zh")) {
+                event.target.src = "https://flagcdn.com/24x18/cn.png"
+            } else if (event.target.src.includes("ko")) {
+                event.target.src = "https://flagcdn.com/24x18/kr.png"
+            } else if (event.target.src.includes("da")) {
+                event.target.src = "https://flagcdn.com/24x18/dk.png"
+            } 
                 
         }
 
