@@ -41,6 +41,8 @@ const app = new Vue({
                 event.target.src = "https://flagcdn.com/24x18/kr.png"
             } else if (event.target.src.includes("da")) {
                 event.target.src = "https://flagcdn.com/24x18/dk.png"
+            } else if (event.target.src.includes("fa")) {
+                event.target.src = "https://flagcdn.com/24x18/ir.png"
             } 
                 
         }
