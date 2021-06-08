@@ -15,7 +15,15 @@
   </head>
   <body>
 
-
+<div id="boolflix">
+  <input type="text" v-model="searchQuery">
+  <div class="movie-card" v-for="movie in movieList">
+    <h5>{{ movie.title }}</h5>
+    <h6>Titolo originale: {{ movie.original_title }}</h6>
+    <h6>Lingua: {{ movie.original_language }}</h6>
+    <h6>Media voto: {{ movie.vote_average }}</h6>
+  </div>
+</div>
     
     <!-- Vuejs -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
