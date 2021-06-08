@@ -9,15 +9,16 @@ const app = new Vue({
     },
 
     methods: {
-
+        tryMe() {
+            axios.get(this.url+this.myKey+"&query="+this.searchQuery)
+            .then (response => {
+                this.movieList = response.data.results
+            })
+        }
     },
 
     mounted () {
-        axios.get(this.url+this.myKey+"&query="+"ritorno+al+futuro")
-        .then (response => {
-            this.movieList = response.data.results
-            console.log(this.movieList);
-        })
+
     }
 
 })

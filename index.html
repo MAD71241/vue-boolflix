@@ -15,8 +15,8 @@
   </head>
   <body>
 
-<div id="boolflix">
-  <input type="text" v-model="searchQuery">
+<div id="boolflix" class="d-flex align-items-center flex-column">
+  <input type="text" v-model="searchQuery" class="align-self-center"><button class="rounded" @click="tryMe">Avvia ricerca</button>
   <div class="movie-card" v-for="movie in movieList">
     <h5>{{ movie.title }}</h5>
     <h6>Titolo originale: {{ movie.original_title }}</h6>
