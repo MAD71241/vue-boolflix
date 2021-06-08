@@ -13,18 +13,17 @@ const app = new Vue({
 
     methods: {
         boolSearch() {
-            axios.get(this.url+this.myKey+"&query="+this.searchQuery)
-            .then (response => {
-                this.movieList = response.data.results
-                console.log(this.movieList);
-            })
-            .catch(error => {
-                console.log("Non è stato possibile caricare i risultati, errore: "+ error);
-            })
+            axios.get(this.url + this.myKey + "&query=" + this.searchQuery)
+                .then(response => {
+                    this.movieList = response.data.results
+                })
+                .catch(error => {
+                    console.log("Non è stato possibile caricare i risultati, errore: " + error);
+                })
         }
     },
 
-    mounted () {
+    mounted() {
 
     }
 
