@@ -29,6 +29,7 @@ const app = new Vue({
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto movie è vuoto. */
                     for (let index = 0; index < this.movieList.length; index++) {
                         const element = this.movieList[index];
+                        this.counter = index
                         if (element.overview == "") {
                             element.overview = "Overview not found."
                         }
@@ -41,7 +42,6 @@ const app = new Vue({
                             this.castMembers.push(cast.data.cast.slice(0, 5))
                         })
                     }
-                    console.log(this.castMembers);
                     this.seriesList = series.data.results
                     console.log(this.seriesList);
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto serie è vuoto. */
