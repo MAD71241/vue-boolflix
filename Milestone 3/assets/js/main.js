@@ -50,7 +50,7 @@ const app = new Vue({
         },
         /* funzione utilizzata per sostituire le immagini poster quando si presenta un errore 404 */
         posterError () {
-            event.target.src = "../assets/img/404_screen.jpg"
+            event.target.src = "./assets/img/404_screen.jpg"
         }
 
     }
