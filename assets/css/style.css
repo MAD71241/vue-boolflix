@@ -36,7 +36,7 @@ h2 {
 }
 
 
-.movie-card .card-flip {
+.movie-card .card-flip, .series-card .card-flip {
     position: absolute;
     top: 0;
     left: 0;
@@ -46,7 +46,7 @@ h2 {
     color: #FFF;
     padding: 15px;
 }
-.movie-card:hover .card-flip {
+.movie-card:hover .card-flip, .series-card:hover .card-flip {
     display: block;
     cursor: pointer;
     background: rgba(0, 0, 0, .8);

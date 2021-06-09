@@ -57,7 +57,7 @@
           />
           <div class="card-flip">
             <h3>{{ movie.title }}</h3>
-          <h6>Titolo originale: {{ movie.original_title }}</h6>
+          <h6>Titolo originale: <span class="font-weight-normal">{{ movie.original_title }}</h6>
           <h6>
             Lingua:
             <img
@@ -66,7 +66,7 @@
               @error="flagError"
             />
           </h6>
-          <h6>Media voto: {{ movie.vote_average }}</h6>
+          <h6>Media voto: <span class="font-weight-normal">{{ movie.vote_average }}</span></h6>
           <p>Overview: {{ movie.overview }}</p>
           </div>
         </div>
@@ -84,10 +84,9 @@
             class="boolflix_thumbnail"
             @error="posterError"
           />
-          <h5>{{ serie.name }}</h5>
-      </div>
-<!--         <h5>{{ serie.name }}</h5>
-        <h6>Titolo originale: {{ serie.original_name }}</h6>
+          <div class="card-flip">
+            <h5>{{ serie.name }}</h5>
+            <h6>Titolo originale: <span class="font-weight-normal">{{ serie.original_name }}</span></h6>
         <h6>
           Lingua:
           <img
@@ -96,7 +95,10 @@
             @error="flagError"
           />
         </h6>
-        <h6>Media voto: {{ serie.vote_average }}</h6> -->
+        <h6>Media voto: <span class="font-weight-normal">{{ serie.vote_average }}</span></h6>
+        <p><span class="font-weight-bold">Overview: </span>{{ serie.overview }}</p>
+          </div>
+      </div>
     </div>
 
     <!-- Vuejs -->
@@ -112,16 +114,3 @@
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
-
-
-<!--         <h5>{{ movie.title }}</h5>
-        <h6>Titolo originale: {{ movie.original_title }}</h6>
-        <h6>
-          Lingua:
-          <img
-            :src="flagUrl+movie.original_language+flagExt"
-            alt=""
-            @error="flagError"
-          />
-        </h6>
-        <h6>Media voto: {{ movie.vote_average }}</h6> -->
