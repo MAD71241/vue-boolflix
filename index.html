@@ -16,19 +16,23 @@
   <body>
     <div id="boolflix" class="d-flex align-items-start flex-column">
       <input
+      id="research_field"
         type="text"
         v-model="searchQuery"
         v-on:keyup.enter="boolSearch"
         class="align-self-center"
-      /><button class="rounded align-self-center" @click="boolSearch">
+      /><button id="research_button" class="rounded align-self-center" @click="boolSearch">
         Avvia ricerca
       </button>
+      <h2 class="align-self-center">Movies</h2>
       <div class="movie-card" v-for="movie in movieList">
+        <img :src="moviePosterUrl+movie.poster_path" alt="" @error="posterError">
         <h5>{{ movie.title }}</h5>
         <h6>Titolo originale: {{ movie.original_title }}</h6>
         <h6>Lingua: <img :src="flagUrl+movie.original_language+flagExt" alt="" @error="flagError"></h6>
         <h6>Media voto: {{ movie.vote_average }}</h6>
       </div>
+      <h2 class="align-self-center">TV Series</h2>
       <div class="series-card" v-for="serie in seriesList">
         <h5>{{ serie.name }}</h5>
         <h6>Titolo originale: {{ serie.original_name }}</h6>

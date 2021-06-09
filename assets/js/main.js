@@ -4,13 +4,13 @@ const app = new Vue({
     data: {
         moviesUrl: "https://api.themoviedb.org/3/search/movie?api_key=",
         seriesUrl: "https://api.themoviedb.org/3/search/tv?api_key=",
+        flagUrl: "https://flagcdn.com/24x18/",
+        moviePosterUrl: "https://image.tmdb.org/t/p/w300/",
         myKey: "b03ae2cf97e2691b0cbd883f2249f38a",
         searchQuery: "",
         movieList: [],
         seriesList: [],
-        flagUrl: "https://flagcdn.com/24x18/",
         flagExt: ".png",
-        movieLang: "",
     },
 
     methods: {
@@ -22,7 +22,9 @@ const app = new Vue({
             ])
                 .then(axios.spread((movies, series) => {
                     this.movieList = movies.data.results
+                    console.log(this.movieList);
                     this.seriesList = series.data.results
+                    console.log(this.seriesList);
                 }))
                 .catch(error => {
                     console.log("Non è stato possibile caricare i risultati, errore: " + error);
@@ -45,6 +47,10 @@ const app = new Vue({
                 event.target.src = "https://flagcdn.com/24x18/ir.png"
             } 
                 
+        },
+        /* funzione utilizzata per sostituire le immagini poster quando si presenta un errore 404 */
+        posterError () {
+            event.target.src = "../assets/img/404_screen.jpg"
         }
 
     }
