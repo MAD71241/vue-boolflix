@@ -4,12 +4,15 @@ const app = new Vue({
     data: {
         moviesUrl: "https://api.themoviedb.org/3/search/movie?api_key=",
         seriesUrl: "https://api.themoviedb.org/3/search/tv?api_key=",
+        castUrl: "https://api.themoviedb.org/3/movie/",
         flagUrl: "https://flagcdn.com/24x18/",
         moviePosterUrl: "https://image.tmdb.org/t/p/w300/",
         myKey: "b03ae2cf97e2691b0cbd883f2249f38a",
         searchQuery: "",
+        counter: 0,
         movieList: [],
         seriesList: [],
+        castMembers: [],
         flagExt: ".png",
     },
 
@@ -29,8 +32,16 @@ const app = new Vue({
                         if (element.overview == "") {
                             element.overview = "Overview not found."
                         }
-
+                        const movieId = element.id 
+                        const genreId = element.genre_ids
+                        /* chiamata Axios per ottenere il cast degli attori */
+                        axios.get(this.castUrl + movieId + "/credits?api_key=" + this.myKey)
+                        .then(cast => {
+                            /* ottengo solo i primi cinque membri del cast */
+                            this.castMembers.push(cast.data.cast.slice(0, 5))
+                        })
                     }
+                    console.log(this.castMembers);
                     this.seriesList = series.data.results
                     console.log(this.seriesList);
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto serie è vuoto. */

@@ -40,6 +40,7 @@
           v-model="searchQuery"
           v-on:keyup.enter="boolSearch"
           class="align-self-center"
+          placeholder="search your title here"
         />
       </div>
       <!-- /Header div -->
@@ -49,7 +50,7 @@
 
       <!-- movie card -->
       <div class="boolrow d-flex flex-direction-row flex-wrap justify-content-start">
-        <div class="movie-card" v-for="movie in movieList">
+        <div class="movie-card" v-for="(movie, index) in movieList">
           <img
             :src="moviePosterUrl+movie.poster_path"
             alt=""
@@ -69,7 +70,8 @@
             />
           </h6>
           <h6>Media voto: <span class="font-weight-normal">{{ movie.vote_average }}</span></h6>
-          <p>Overview: {{ movie.overview }}</p>
+          <h6>Starring: <span class="font-weight-normal font-size-12" v-for="cast in castMembers">{{ cast[index].name }}, </span></h6>
+          <p class="font-size-12"><span class="font-size-14 font-weight-bold">Overview: </span>{{ movie.overview }}</p>
           </div>
           <!-- /overlay -->
         </div>
