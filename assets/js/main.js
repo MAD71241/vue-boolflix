@@ -23,8 +23,24 @@ const app = new Vue({
                 .then(axios.spread((movies, series) => {
                     this.movieList = movies.data.results
                     console.log(this.movieList);
+                    /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto movie è vuoto. */
+                    for (let index = 0; index < this.movieList.length; index++) {
+                        const element = this.movieList[index];
+                        if (element.overview == "") {
+                            element.overview = "Overview not found."
+                        }
+
+                    }
                     this.seriesList = series.data.results
                     console.log(this.seriesList);
+                    /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto serie è vuoto. */
+                    for (let index = 0; index < this.seriesList.length; index++) {
+                        const element = this.seriesList[index];
+                        if (element.overview == "") {
+                            element.overview = "Overview not found."
+                        }
+
+                    }
                 }))
                 .catch(error => {
                     console.log("Non è stato possibile caricare i risultati, errore: " + error);
@@ -45,11 +61,11 @@ const app = new Vue({
                 event.target.src = "https://flagcdn.com/24x18/dk.png"
             } else if (event.target.src.includes("fa")) {
                 event.target.src = "https://flagcdn.com/24x18/ir.png"
-            } 
-                
+            }
+
         },
         /* funzione utilizzata per sostituire le immagini poster quando si presenta un errore 404 */
-        posterError (event) {
+        posterError(event) {
             event.target.src = "../assets/img/404_screen.jpg"
         }
 
