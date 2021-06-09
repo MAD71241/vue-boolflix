@@ -23,6 +23,10 @@ h2 {
     font-family: 'Bebas Neue', cursive;
 }
 
+input {
+    width: 300px;
+}
+
 /********************** SEZIONI **********************/
 
 /* row */
@@ -43,6 +47,7 @@ h2 {
 
 .movie-card .card-flip, .series-card .card-flip {
     position: absolute;
+    overflow-y: auto;
     top: 0;
     left: 0;
     width: 100%;
@@ -64,5 +69,5 @@ h2 {
 }
 
 .card-flip p {
-    font-size: 12px;
+    font-size: 14px;
 }

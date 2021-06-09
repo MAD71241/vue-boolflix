@@ -22,9 +22,7 @@ const app = new Vue({
             ])
                 .then(axios.spread((movies, series) => {
                     this.movieList = movies.data.results
-                    console.log(this.movieList);
                     this.seriesList = series.data.results
-                    console.log(this.seriesList);
                 }))
                 .catch(error => {
                     console.log("Non è stato possibile caricare i risultati, errore: " + error);
@@ -49,7 +47,7 @@ const app = new Vue({
                 
         },
         /* funzione utilizzata per sostituire le immagini poster quando si presenta un errore 404 */
-        posterError () {
+        posterError (event) {
             event.target.src = "../assets/img/404_screen.jpg"
         }
 
