@@ -7,37 +7,70 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <link
       rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
     <title>Document</title>
   </head>
-  <body>
-    <div id="boolflix" class="d-flex align-items-start flex-column">
-      <input
-      id="research_field"
-        type="text"
-        v-model="searchQuery"
-        v-on:keyup.enter="boolSearch"
-        class="align-self-center"
-      /><button id="research_button" class="rounded align-self-center" @click="boolSearch">
-        Avvia ricerca
-      </button>
+  <body class="bg-black">
+    <div id="boolflix" class="text-white">
+      <div class="header d-flex justify-content-between">
+        <a href="https://fontmeme.com/netflix-font/"
+          ><img
+            src="https://fontmeme.com/permalink/210609/4937b74c6317b36c509baa13669b4b20.png"
+            alt="netflix-font"
+        /></a>
+        <input
+          id="research_field"
+          type="text"
+          v-model="searchQuery"
+          v-on:keyup.enter="boolSearch"
+          class="align-self-center"
+        />
+      </div>
       <h2 class="align-self-center">Movies</h2>
       <div class="movie-card" v-for="movie in movieList">
-        <img :src="moviePosterUrl+movie.poster_path" alt="" @error="posterError">
+        <img
+          :src="moviePosterUrl+movie.poster_path"
+          alt=""
+          @error="posterError"
+        />
         <h5>{{ movie.title }}</h5>
         <h6>Titolo originale: {{ movie.original_title }}</h6>
-        <h6>Lingua: <img :src="flagUrl+movie.original_language+flagExt" alt="" @error="flagError"></h6>
+        <h6>
+          Lingua:
+          <img
+            :src="flagUrl+movie.original_language+flagExt"
+            alt=""
+            @error="flagError"
+          />
+        </h6>
         <h6>Media voto: {{ movie.vote_average }}</h6>
       </div>
       <h2 class="align-self-center">TV Series</h2>
       <div class="series-card" v-for="serie in seriesList">
-        <img :src="moviePosterUrl+serie.poster_path" alt="" @error="posterError">
+        <img
+          :src="moviePosterUrl+serie.poster_path"
+          alt=""
+          @error="posterError"
+        />
         <h5>{{ serie.name }}</h5>
         <h6>Titolo originale: {{ serie.original_name }}</h6>
-        <h6>Lingua: <img :src="flagUrl+serie.original_language+flagExt" alt="" @error="flagError"></h6>
+        <h6>
+          Lingua:
+          <img
+            :src="flagUrl+serie.original_language+flagExt"
+            alt=""
+            @error="flagError"
+          />
+        </h6>
         <h6>Media voto: {{ serie.vote_average }}</h6>
       </div>
     </div>

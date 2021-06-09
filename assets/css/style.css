@@ -1,3 +1,13 @@
-#research_field, #research_button {
-    margin: 15px 0;
+.header {
+    width: 100%;
+    background-color: black;
+    padding: 15px;
+}
+
+.text-white {
+    color: white;
+}
+
+.bg-black {
+    background-color: black;
 }
