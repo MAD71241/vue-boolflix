@@ -55,6 +55,20 @@
             class="boolflix_thumbnail"
             @error="posterError"
           />
+          <div class="card-flip">
+            <h3>{{ movie.title }}</h3>
+          <h6>Titolo originale: {{ movie.original_title }}</h6>
+          <h6>
+            Lingua:
+            <img
+              :src="flagUrl+movie.original_language+flagExt"
+              alt=""
+              @error="flagError"
+            />
+          </h6>
+          <h6>Media voto: {{ movie.vote_average }}</h6>
+          <p>Overview: {{ movie.overview }}</p>
+          </div>
         </div>
       </div>
       <!-- /movie card -->
@@ -63,13 +77,14 @@
       <!-- sezione serie tv -->
       <h2 class="text-netflixred">TV Series</h2>
       <div class="boolrow d-flex flex-direction-row flex-wrap justify-content-start">
-        <div class="series-card" v-for="serie in seriesList">
+        <div class="series-card text-wrap" v-for="serie in seriesList">
           <img
             :src="moviePosterUrl+serie.poster_path"
             alt=""
             class="boolflix_thumbnail"
             @error="posterError"
           />
+          <h5>{{ serie.name }}</h5>
       </div>
 <!--         <h5>{{ serie.name }}</h5>
         <h6>Titolo originale: {{ serie.original_name }}</h6>
