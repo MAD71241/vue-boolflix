@@ -4,10 +4,30 @@
     padding: 15px;
 }
 
+h2 {
+    margin: 0 15px;
+    font-family: 'Bebas Neue', cursive;
+}
+
 .text-white {
     color: white;
 }
 
+.text-netflixred {
+    color: #DB202C;
+}
+
 .bg-black {
     background-color: black;
+}
+
+.boolrow {
+    width: 100%;
+    margin: 0 15px;
+}
+
+.boolflix_thumbnail {
+    height: 450px;
+    width: 300px;
+    margin: 10px 5px;
 }

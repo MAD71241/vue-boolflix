@@ -17,10 +17,16 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body class="bg-black">
     <div id="boolflix" class="text-white">
+      <!-- Header div -->
       <div class="header d-flex justify-content-between">
         <a href="https://fontmeme.com/netflix-font/"
           ><img
@@ -35,26 +41,27 @@
           class="align-self-center"
         />
       </div>
-      <h2 class="align-self-center">Movies</h2>
-      <div class="movie-card" v-for="movie in movieList">
-        <img
-          :src="moviePosterUrl+movie.poster_path"
-          alt=""
-          @error="posterError"
-        />
-        <h5>{{ movie.title }}</h5>
-        <h6>Titolo originale: {{ movie.original_title }}</h6>
-        <h6>
-          Lingua:
+      <!-- /Header div -->
+
+      <!-- sezione film -->
+      <h2 class="text-netflixred">Movies</h2>
+
+      <!-- movie card -->
+      <div class="boolrow d-flex flex-direction-row flex-wrap justify-content-center">
+        <div class="movie-card" v-for="movie in movieList">
           <img
-            :src="flagUrl+movie.original_language+flagExt"
+            :src="moviePosterUrl+movie.poster_path"
             alt=""
-            @error="flagError"
+            class="boolflix_thumbnail"
+            @error="posterError"
           />
-        </h6>
-        <h6>Media voto: {{ movie.vote_average }}</h6>
+        </div>
       </div>
-      <h2 class="align-self-center">TV Series</h2>
+      <!-- /movie card -->
+      <!-- /sezione film -->
+
+      <!-- sezione serie tv -->
+      <h2 class="text-netflixred">TV Series</h2>
       <div class="series-card" v-for="serie in seriesList">
         <img
           :src="moviePosterUrl+serie.poster_path"
@@ -88,3 +95,16 @@
     <script src="./assets/js/main.js"></script>
   </body>
 </html>
+
+
+<!--         <h5>{{ movie.title }}</h5>
+        <h6>Titolo originale: {{ movie.original_title }}</h6>
+        <h6>
+          Lingua:
+          <img
+            :src="flagUrl+movie.original_language+flagExt"
+            alt=""
+            @error="flagError"
+          />
+        </h6>
+        <h6>Media voto: {{ movie.vote_average }}</h6> -->
