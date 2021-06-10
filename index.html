@@ -27,6 +27,7 @@
   </head>
   <body class="bg-black">
     <div id="boolflix" class="text-white">
+
       <!-- Header div -->
       <div class="header d-flex justify-content-between">
         <a href="#"
@@ -70,6 +71,8 @@
             />
             </h6>
             <h6>Media voto: <span class="font-weight-normal">{{ movie.vote_average }}</span></h6>
+            <h6>Cast: <span v-for="cast in movie.cast" class="font-size-12 font-weight-normal">{{cast.name}}, </span></h6>
+            <h6>Genre: <span v-for="genre in movie.genre" class="font-size-12 font-weight-normal">{{genre.name}}, </span></h6>
             <p class="font-size-12"><span class="font-size-14 font-weight-bold">Overview: </span>{{ movie.overview }}</p>
           </div>
           <!-- /overlay -->
@@ -100,13 +103,17 @@
           />
         </h6>
         <h6>Media voto: <span class="font-weight-normal">{{ serie.vote_average }}</span></h6>
-        <p><span class="font-weight-bold">Overview: </span>{{ serie.overview }}</p>
+        <h6>Cast: <span v-for="cast in serie.cast" class="font-size-12 font-weight-normal">{{cast.name}}, </span></h6>
+        <h6>Genre: <span v-for="genre in serie.genre" class="font-size-12 font-weight-normal">{{genre.name}}, </span></h6>
+        <p><span class="font-size-12"><span class="font-size-14 font-weight-bold">Overview: </span>{{ serie.overview }}</p>
           </div>
       </div>
+      
+    </div>
     </div>
 
     <!-- Vuejs -->
-    <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <!-- Axios -->
     <script
       type="application/javascript"

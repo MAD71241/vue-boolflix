@@ -1,4 +1,4 @@
-const app = new Vue({
+const boolflix = new Vue({
     el: "#boolflix",
 
     data: {
@@ -23,7 +23,6 @@ const app = new Vue({
             ])
                 .then(axios.spread((movies, series) => {
                     this.movieList = movies.data.results
-                    console.log(this.movieList);
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto movie è vuoto. */
                     for (let index = 0; index < this.movieList.length; index++) {
                         const element = this.movieList[index];
@@ -31,23 +30,52 @@ const app = new Vue({
                             element.overview = "Overview not found."
                         }
                         const movieId = element.id
-                        //const genreId = element.genre_ids
                         /* chiamata Axios per ottenere il cast degli attori */
                         axios.get(this.castUrl + movieId + "/credits?api_key=" + this.myKey)
                             .then(cast => {
-                                this.$set(element, element.cast, cast.data.cast.slice(0, 5));
+                                //inserisce oggetto "cast" in ogni film
+                                this.$set(element, "cast", cast.data.cast.slice(0, 5));
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                        // chiamata Axios per ottenere il genere del film
+                        axios.get(this.castUrl + movieId + "?api_key=" + this.myKey)
+                            .then(moviedata => {
+                                this.$set(element, "genre", moviedata.data.genres);
+                            })
+                            .catch(error => {
+                                console.log(error);
                             })
                     }
 
                     this.seriesList = series.data.results
-                    console.log(this.seriesList);
+                    console.log(this.movieList);
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto serie è vuoto. */
                     for (let index = 0; index < this.seriesList.length; index++) {
                         const element = this.seriesList[index];
+                        const seriesId = element.id
                         if (element.overview == "") {
                             element.overview = "Overview not found."
                         }
-
+                        /* chiamata Axios per ottenere il cast degli attori */
+                        axios.get(this.castUrl + seriesId + "/credits?api_key=" + this.myKey)
+                             .then(cast => {
+                                //inserisce oggetto "cast" in ogni film
+                                this.$set(element, "cast", cast.data.cast.slice(0, 5));
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                        // chiamata Axios per ottenere il genere del film
+                        axios.get(this.castUrl + seriesId + "?api_key=" + this.myKey)
+                            .then(seriedata => {
+                                this.$set(element, "genre", seriedata.data.genres);
+                                console.log(element);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
                     }
                 }))
                 .catch(error => {
@@ -82,3 +110,5 @@ const app = new Vue({
 
     }
 })
+
+//"/credits?api_key="
