@@ -35,7 +35,7 @@ const app = new Vue({
                         /* chiamata Axios per ottenere il cast degli attori */
                         axios.get(this.castUrl + movieId + "/credits?api_key=" + this.myKey)
                             .then(cast => {
-                                element.cast = cast.data.cast.slice(0, 5)
+                                this.$set(element, element.cast, cast.data.cast.slice(0, 5));
                             })
                     }
 
