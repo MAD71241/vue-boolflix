@@ -67,7 +67,7 @@ const boolflix = new Vue({
                             .catch(error => {
                                 console.log(error);
                             })
-                        // chiamata Axios per ottenere il genere del film
+                        // chiamata Axios per ottenere il genere della serie
                         axios.get(this.castUrl + seriesId + "?api_key=" + this.myKey)
                             .then(seriedata => {
                                 this.$set(element, "genre", seriedata.data.genres);
@@ -110,5 +110,3 @@ const boolflix = new Vue({
 
     }
 })
-
-//"/credits?api_key="
