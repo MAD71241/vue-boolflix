@@ -11,8 +11,6 @@ const app = new Vue({
         searchQuery: "",
         movieList: [],
         seriesList: [],
-        castMembers: [],
-        genreList: [],
         flagExt: ".png",
     },
 
@@ -33,11 +31,11 @@ const app = new Vue({
                             element.overview = "Overview not found."
                         }
                         const movieId = element.id
-                        const genreId = element.genre_ids
+                        //const genreId = element.genre_ids
                         /* chiamata Axios per ottenere il cast degli attori */
                         axios.get(this.castUrl + movieId + "/credits?api_key=" + this.myKey)
                             .then(cast => {
-                                this.castMembers[cast.data.id] = (cast.data.cast.slice(0, 5))
+                                element.cast = cast.data.cast.slice(0, 5)
                             })
                     }
 
@@ -55,7 +53,6 @@ const app = new Vue({
                 .catch(error => {
                     console.log("Non è stato possibile caricare i risultati, errore: " + error);
                 })
-                console.log(this.castMembers);
         },
         /* funzione utilizzata per sostituire i codici bandiera che generano un errore 404 */
         flagError(event) {
