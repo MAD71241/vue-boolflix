@@ -74,4 +74,8 @@ const app = new Vue({
     mounted() {
         
     }
+    ,
+    computed: {
+        
+    }
 })

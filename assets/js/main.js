@@ -9,6 +9,7 @@ const boolflix = new Vue({
         moviePosterUrl: "https://image.tmdb.org/t/p/w300/",
         myKey: "b03ae2cf97e2691b0cbd883f2249f38a",
         searchQuery: "",
+        genreQuery: "",
         movieList: [],
         seriesList: [],
         flagExt: ".png",
@@ -23,9 +24,10 @@ const boolflix = new Vue({
             ])
                 .then(axios.spread((movies, series) => {
                     this.movieList = movies.data.results
-                    /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto movie è vuoto. */
                     for (let index = 0; index < this.movieList.length; index++) {
                         const element = this.movieList[index];
+                        element.vote_average = parseInt(element.vote_average / 2);
+                        /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto movie è vuoto. */
                         if (element.overview == "") {
                             element.overview = "Overview not found."
                         }
@@ -54,6 +56,7 @@ const boolflix = new Vue({
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto serie è vuoto. */
                     for (let index = 0; index < this.seriesList.length; index++) {
                         const element = this.seriesList[index];
+                        element.vote_average = parseInt(element.vote_average / 2);
                         const seriesId = element.id
                         if (element.overview == "") {
                             element.overview = "Overview not found."
@@ -106,7 +109,4 @@ const boolflix = new Vue({
 
     }
     ,
-    mounted() {
-
-    }
 })

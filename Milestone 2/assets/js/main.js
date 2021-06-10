@@ -23,6 +23,12 @@ const app = new Vue({
                 .then(axios.spread((movies, series) => {
                     this.movieList = movies.data.results
                     this.seriesList = series.data.results
+                    this.movieList.forEach(element => {
+                        element.vote_average = parseInt(element.vote_average / 2);
+                    });
+                    this.seriesList.forEach(element => {
+                        element.vote_average = parseInt(element.vote_average / 2);
+                    });
                 }))
                 .catch(error => {
                     console.log("Non è stato possibile caricare i risultati, errore: " + error);

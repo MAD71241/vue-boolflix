@@ -11,6 +11,12 @@
       integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+      integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+      crossorigin="anonymous"
+    />
     <title>Document</title>
   </head>
   <body>
@@ -26,14 +32,40 @@
       <div class="movie-card" v-for="movie in movieList">
         <h5>{{ movie.title }}</h5>
         <h6>Titolo originale: {{ movie.original_title }}</h6>
-        <h6>Lingua: <img :src="flagUrl+movie.original_language+flagExt" alt="" @error="flagError"></h6>
-        <h6>Media voto: {{ movie.vote_average }}</h6>
+        <h6>
+          Lingua:
+          <img
+            :src="flagUrl+movie.original_language+flagExt"
+            alt=""
+            @error="flagError"
+          />
+        </h6>
+        <h6>
+          Voto:
+          <strong v-if="movie.vote_average == 0"
+            ><i class="far fa-star"></i
+          ></strong>
+          <i class="fas fa-star" v-for="x in movie.vote_average" v-else></i>
+        </h6>
       </div>
       <div class="series-card" v-for="serie in seriesList">
         <h5>{{ serie.name }}</h5>
         <h6>Titolo originale: {{ serie.original_name }}</h6>
-        <h6>Lingua: <img :src="flagUrl+serie.original_language+flagExt" alt="" @error="flagError"></h6>
-        <h6>Media voto: {{ serie.vote_average }}</h6>
+        <h6>
+          Lingua:
+          <img
+            :src="flagUrl+serie.original_language+flagExt"
+            alt=""
+            @error="flagError"
+          />
+        </h6>
+        <h6>
+          Voto:
+          <strong v-if="serie.vote_average == 0"
+            ><i class="far fa-star"></i
+          ></strong>
+          <i class="fas fa-star" v-for="x in serie.vote_average" v-else></i>
+        </h6>
       </div>
     </div>
 
