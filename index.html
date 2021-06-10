@@ -29,7 +29,7 @@
     <div id="boolflix" class="text-white">
       <!-- Header div -->
       <div class="header d-flex justify-content-between">
-        <a href="https://fontmeme.com/netflix-font/"
+        <a href="#"
           ><img
             src="https://fontmeme.com/permalink/210609/4937b74c6317b36c509baa13669b4b20.png"
             alt="netflix-font"
@@ -60,18 +60,17 @@
           <!-- overlay -->
           <div class="card-flip">
             <h3>{{ movie.title }}</h3>
-          <h6>Titolo originale: <span class="font-weight-normal">{{ movie.original_title }}</h6>
-          <h6>
+            <h6>Titolo originale: <span class="font-weight-normal">{{ movie.original_title }}</h6>
+            <h6>
             Lingua:
             <img
               :src="flagUrl+movie.original_language+flagExt"
               alt=""
               @error="flagError"
             />
-          </h6>
-          <h6>Media voto: <span class="font-weight-normal">{{ movie.vote_average }}</span></h6>
-          <!-- <h6>Starring: <span class="font-weight-normal font-size-12" v-for="cast in castMembers">{{ cast[index].name }}, </span></h6> -->
-          <p class="font-size-12"><span class="font-size-14 font-weight-bold">Overview: </span>{{ movie.overview }}</p>
+            </h6>
+            <h6>Media voto: <span class="font-weight-normal">{{ movie.vote_average }}</span></h6>
+            <p class="font-size-12"><span class="font-size-14 font-weight-bold">Overview: </span>{{ movie.overview }}</p>
           </div>
           <!-- /overlay -->
         </div>

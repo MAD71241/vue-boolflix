@@ -9,10 +9,10 @@ const app = new Vue({
         moviePosterUrl: "https://image.tmdb.org/t/p/w300/",
         myKey: "b03ae2cf97e2691b0cbd883f2249f38a",
         searchQuery: "",
-        counter: 0,
         movieList: [],
         seriesList: [],
         castMembers: [],
+        genreList: [],
         flagExt: ".png",
     },
 
@@ -29,19 +29,18 @@ const app = new Vue({
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto movie è vuoto. */
                     for (let index = 0; index < this.movieList.length; index++) {
                         const element = this.movieList[index];
-                        this.counter = index
                         if (element.overview == "") {
                             element.overview = "Overview not found."
                         }
-                        const movieId = element.id 
+                        const movieId = element.id
                         const genreId = element.genre_ids
                         /* chiamata Axios per ottenere il cast degli attori */
                         axios.get(this.castUrl + movieId + "/credits?api_key=" + this.myKey)
-                        .then(cast => {
-                            /* ottengo solo i primi cinque membri del cast */
-                            this.castMembers.push(cast.data.cast.slice(0, 5))
-                        })
+                            .then(cast => {
+                                this.castMembers[cast.data.id] = (cast.data.cast.slice(0, 5))
+                            })
                     }
+
                     this.seriesList = series.data.results
                     console.log(this.seriesList);
                     /* ciclo che ritorna una stringa se l'elemento overview nell'oggetto serie è vuoto. */
@@ -56,7 +55,7 @@ const app = new Vue({
                 .catch(error => {
                     console.log("Non è stato possibile caricare i risultati, errore: " + error);
                 })
-
+                console.log(this.castMembers);
         },
         /* funzione utilizzata per sostituire i codici bandiera che generano un errore 404 */
         flagError(event) {
