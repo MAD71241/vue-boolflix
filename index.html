@@ -104,7 +104,13 @@
             @error="flagError"
           />
         </h6>
-        <h6>Media voto: <span class="font-weight-normal">{{ serie.vote_average }}</span></h6>
+        <h6>
+          Voto:
+          <strong v-if="serie.vote_average == 0"
+            ><i class="far fa-star"></i
+          ></strong>
+          <i class="fas fa-star" v-for="x in serie.vote_average" v-else></i>
+        </h6>
         <h6>Cast: <span v-for="cast in serie.cast" class="font-size-12 font-weight-normal">{{cast.name}}, </span></h6>
         <h6>Genre: <span v-for="genre in serie.genre" class="font-size-12 font-weight-normal">{{genre.name}}, </span></h6>
         <p><span class="font-size-12"><span class="font-size-14 font-weight-bold">Overview: </span>{{ serie.overview }}</p>
